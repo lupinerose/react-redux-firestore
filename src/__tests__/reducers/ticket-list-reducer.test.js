@@ -81,6 +81,37 @@ describe('ticketListReducer', () => {
     });
   });
 
+  test('Should successfully update only location property of existing ticket data in masterTicketList', () => {
+    const { names, location, issue, id } = ticketData;
+
+    action = {
+      type: 'ADD_TICKET',
+      names: names,
+      location: location,
+      issue: issue,
+      id: id
+    };
+
+    const newState = ticketListReducer({}, action);
+
+    action = {
+      type: 'UPDATE_TICKET_LOCATION',
+      issue: "actually meant to ask about mapStateToProps()",
+      id: 1
+    };
+
+    const newState2 = ticketListReducer(newState, action);
+
+    expect(newState2).toEqual({
+      [id] : {
+        names: names,
+        location: location,
+        issue: "actually meant to ask about mapStateToProps()",
+        id: id
+      }
+    });
+  });
+
   test('Should successfully delete a ticket', () => {
     action = {
       type: 'DELETE_TICKET',
