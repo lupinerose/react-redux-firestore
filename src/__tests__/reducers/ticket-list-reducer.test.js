@@ -1,4 +1,5 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
+import * as c from './../../actions/ActionTypes';
 
 describe('ticketListReducer', () => {
 	
@@ -31,7 +32,7 @@ describe('ticketListReducer', () => {
 	test('Should successfully add new ticket data to masterTicketList', () => {
     const { names, location, issue, id } = ticketData;
     action = {
-      type: 'ADD_TICKET',
+      type: c.ADD_TICKET,
       names: names,
       location: location,
       issue: issue,
@@ -52,7 +53,7 @@ describe('ticketListReducer', () => {
     const { names, location, issue, id } = ticketData;
 
     action = {
-      type: 'ADD_TICKET',
+      type: c.ADD_TICKET,
       names: names,
       location: location,
       issue: issue,
@@ -62,7 +63,7 @@ describe('ticketListReducer', () => {
     const newState = ticketListReducer({}, action);
 
     action = {
-      type: 'ADD_TICKET',
+      type: c.ADD_TICKET,
       names: "harvey",
       location: "3b",
       issue: "halp",
@@ -81,11 +82,11 @@ describe('ticketListReducer', () => {
     });
   });
 
-  test('Should successfully update only location property of existing ticket data in masterTicketList', () => {
+  test('Should successfully update only issue property of existing ticket data in masterTicketList', () => {
     const { names, location, issue, id } = ticketData;
 
     action = {
-      type: 'ADD_TICKET',
+      type: c.ADD_TICKET,
       names: names,
       location: location,
       issue: issue,
@@ -95,7 +96,7 @@ describe('ticketListReducer', () => {
     const newState = ticketListReducer({}, action);
 
     action = {
-      type: 'UPDATE_TICKET_LOCATION',
+      type: c.UPDATE_TICKET_ISSUE,
       issue: "actually meant to ask about mapStateToProps()",
       id: 1
     };
@@ -114,7 +115,7 @@ describe('ticketListReducer', () => {
 
   test('Should successfully delete a ticket', () => {
     action = {
-      type: 'DELETE_TICKET',
+      type: c.DELETE_TICKET,
       id: 1
     };
 
