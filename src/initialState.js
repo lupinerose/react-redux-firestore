@@ -1,4 +1,5 @@
 import { v4 } from 'uuid';
+import Moment from 'moment';
 
 const id1 = v4();
 const id2 = v4();
@@ -9,13 +10,17 @@ export default {
       names: 'Ryan & Aimen',
       location: '4b',
       issue: 'Redux action is not working correctly.',
-      id: id1 
+      id: id1,
+      timeOpen: new Moment(),
+      formattedWaitTime: new Moment().fromNow(true)
     },
     [id2]: {
       names: 'Jasmine and Justine',
       location: '2a',
       issue: 'Reducer has side effects.',
-      id: id2
+      id: id2, 
+      timeOpen: new Moment(),
+      formattedWaitTime: new Moment().fromNow(true)
     }
   }
 }
